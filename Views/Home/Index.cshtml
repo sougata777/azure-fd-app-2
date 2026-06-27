@@ -1,0 +1,271 @@
+@{
+    ViewData["Title"] = "HFG-N Premium Desk Setup - Tactile Perfection";
+}
+
+<!-- Hero Section -->
+<div class="hero-container">
+    <div class="glass-card hero-card">
+        <div class="hero-content">
+            <span class="hero-subtitle">Premium Workspaces</span>
+            <h1 class="hero-title">Tactile Perfection.<br><span class="highlight">Minimal Design.</span></h1>
+            <p class="hero-description">
+                Crafting tactile aesthetics for premium work environments. Elevate your typing experience with our custom hot-swappable mechanical keyboards, merino wool desk pads, and precision workstation accessories.
+            </p>
+            <div class="hero-buttons">
+                <a asp-controller="Home" asp-action="Products" class="btn btn-primary btn-lg">
+                    <span>Explore Products</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a asp-controller="Home" asp-action="About" class="btn btn-secondary btn-lg">
+                    Our Story
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="section-container">
+    <div class="section-header">
+        <h2>Designed to Inspire</h2>
+        <p>Every tactile feedback, click, and contour is engineered for productivity.</p>
+    </div>
+    
+    <div class="features-grid">
+        <div class="glass-card feature-card">
+            <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                    <line x1="6" y1="8" x2="6" y2="8"></line>
+                    <line x1="10" y1="8" x2="10" y2="8"></line>
+                    <line x1="14" y1="8" x2="14" y2="8"></line>
+                    <line x1="18" y1="8" x2="18" y2="8"></line>
+                    <line x1="6" y1="12" x2="6" y2="12"></line>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                    <line x1="18" y1="12" x2="18" y2="12"></line>
+                    <line x1="7" y1="16" x2="17" y2="16"></line>
+                </svg>
+            </div>
+            <h3>Bespoke Keyboards</h3>
+            <p>CNC-milled heavy aluminum chassis, custom pre-lubed linear switches, and gasket mounting for soft acoustics.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+            <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h3>Ergonomic Peripherals</h3>
+            <p>Sculpted multi-device input gear featuring high-precision tracking sensors and silent tactile switches.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+            <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <h3>Desk Organization</h3>
+            <p>Sustainably sourced walnut desk shelves and natural merino wool desk mats to define your workstation space.</p>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        padding: 60px 24px;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+        margin-bottom: 40px;
+    }
+
+    .hero-card {
+        max-width: 900px;
+        width: 100%;
+        padding: 80px 60px;
+        background: var(--bg-glass);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-card::before {
+        content: '';
+        position: absolute;
+        top: -30%;
+        left: -30%;
+        width: 160%;
+        height: 160%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        display: inline-block;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        background: var(--accent-glow);
+        padding: 6px 16px;
+        border-radius: var(--radius-pill);
+    }
+
+    .hero-title {
+        font-size: 3.8rem;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        letter-spacing: -0.04em;
+    }
+
+    .hero-title .highlight {
+        background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin: 0 auto 40px;
+        max-width: 680px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .btn-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+        transition: transform var(--transition-fast);
+    }
+
+    .btn:hover .btn-icon {
+        transform: translateX(4px);
+    }
+
+    /* Sections */
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 24px;
+    }
+    
+    .bg-alternate {
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        margin-bottom: 60px;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+    }
+
+    .section-header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .feature-card {
+        padding: 40px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--accent-glow);
+        color: var(--accent-color);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+
+    .feature-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+
+    .feature-card p {
+        color: var(--text-secondary);
+        line-height: 1.7;
+    }
+
+
+    /* Responsive adjustments */
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+        .hero-card {
+            padding: 50px 30px;
+        }
+        .hero-buttons {
+            flex-direction: column;
+            gap: 12px;
+        }
+    }
+</style>

@@ -1,0 +1,238 @@
+@{
+    ViewData["Title"] = "About Us - HFG-N Design Collective";
+}
+
+<!-- About Header -->
+<div class="about-hero-container">
+    <div class="glass-card about-hero-card">
+        <span class="about-subtitle">The Studio</span>
+        <h1 class="gradient-title">Engineering Tactility</h1>
+        <p class="about-lead">
+            We are a group of designers, engineers, and keyboard enthusiasts dedicated to bridging the gap between desktop utility and sensory satisfaction.
+        </p>
+    </div>
+</div>
+
+<!-- Story Section -->
+<div class="section-container">
+    <div class="story-grid">
+        <div class="story-image">
+            <img src="/images/products/aerokey.jpg" alt="HFG-N Keyboard Prototype Detail" loading="lazy">
+        </div>
+        <div class="story-text">
+            <h2>The HFG-N Philosophy</h2>
+            <p class="paragraph-large">
+                Why do the objects we touch the most often feel the cheapest?
+            </p>
+            <p>
+                In the modern workspace, we spend hours interacting with keyboards, mice, and desk accessories. Yet, many of these interfaces are built from flimsy plastics and hollow structures that compromise acoustics and comfort.
+            </p>
+            <p>
+                At HFG-N, we design premium alternatives. We utilize CNC-milled heavy aluminum, solid American walnut, and pure merino wool. Every keyboard housing uses gasket-mounted layouts to isolate vibration and tune key acoustics to a crisp, satisfying "clack". Our desk organizational assets are hand-finished using natural oils to bring organic warmth to a digital workspace.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Pillars Section -->
+<div class="section-container bg-alternate">
+    <div class="section-header">
+        <h2>Our Three Pillars</h2>
+        <p>A rigorous commitment to tactile feedback, aesthetic longevity, and mechanical purity.</p>
+    </div>
+
+    <div class="pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="pillar-card">
+            <div class="pillar-num">01</div>
+            <h3>Tactile Acoustics</h3>
+            <p>We analyze the sound profiles of switches and plates. Every board includes custom gasket mounting, custom plate materials (like FR4 or POM), and multi-layer silicone dampeners to eliminate ping and rattle.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar-card">
+            <div class="pillar-num">02</div>
+            <h3>Organic Materials</h3>
+            <p>We reject synthetic plastics wherever possible. We integrate premium natural materials—American walnut, full-grain leather, and real merino wool felt—creating setups that look, feel, and age beautifully.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-card">
+            <div class="pillar-num">03</div>
+            <h3>Sustainable Utility</h3>
+            <p>Our products are engineered to be repaired and modified, not replaced. Keyboards feature hot-swappable switch sockets and standard hex screws, while desk accessories utilize heavy-duty metal joints.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .about-hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 24px;
+        background: radial-gradient(circle at center, rgba(59, 113, 254, 0.1) 0%, transparent 60%);
+        margin-bottom: 20px;
+    }
+
+    .about-hero-card {
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+        padding: 50px 40px;
+        background: var(--bg-glass);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .about-subtitle {
+        display: inline-block;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        color: var(--accent-color);
+        margin-bottom: 16px;
+    }
+
+    .gradient-title {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.03em;
+    }
+
+    .about-lead {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+
+    /* Section Utilities */
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 24px;
+    }
+
+    .bg-alternate {
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        margin-bottom: 60px;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+    }
+
+    /* Story Layout */
+    .story-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 60px;
+        align-items: center;
+    }
+
+    .story-image {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        height: 400px;
+        border: 1px solid var(--border-color);
+    }
+
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .story-text h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    .story-text p {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+    .story-text .paragraph-large {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.5;
+    }
+
+    /* Pillars Layout */
+    .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    .pillar-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        padding: 40px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
+
+    .pillar-num {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: var(--accent-glow);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    .pillar-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    .pillar-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Responsive adjustments */
+    @@media (max-width: 768px) {
+        .gradient-title {
+            font-size: 2.2rem;
+        }
+        .story-image {
+            height: 300px;
+        }
+        .story-grid {
+            gap: 30px;
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

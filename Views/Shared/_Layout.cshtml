@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HFG-N Premium Desk Setup</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="light-mode">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a class="logo-link" asp-controller="Home" asp-action="Index">
+                <span class="logo-accent">HFG</span>-N
+            </a>
+            
+            <nav class="main-nav">
+                <a class="nav-lnk @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-lnk @(ViewContext.RouteData.Values["action"]?.ToString() == "Products" ? "active" : "")" asp-controller="Home" asp-action="Products">Products</a>
+                <a class="nav-lnk @(ViewContext.RouteData.Values["action"]?.ToString() == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About Us</a>
+            </nav>
+            
+            <div class="header-actions">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                    <!-- Sun Icon (Light Mode active, click for dark) -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (Dark Mode active, click for light) -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                
+                <!-- Cart Button -->
+                <button id="cart-toggle" class="icon-btn cart-btn" aria-label="View Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-header">
+                <h3>Your Cart</h3>
+                <button id="cart-close" class="close-btn" aria-label="Close Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="cart-drawer-items" id="cart-items-container">
+                <!-- Dynamically filled with JS -->
+                <div class="empty-cart-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-cart-icon">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <p>Your cart is empty.</p>
+                    <a asp-controller="Home" asp-action="Products" class="btn btn-primary btn-sm">Browse Products</a>
+                </div>
+            </div>
+            
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn btn-primary btn-block">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Main Content Area -->
+    <main role="main" class="main-content">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a class="logo-link" asp-controller="Home" asp-action="Index">
+                    <span class="logo-accent">HFG</span>-N
+                </a>
+                <p class="footer-tagline">Crafting tactile aesthetics for premium work environments.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="Home" asp-action="Products">Products</a>
+                <a asp-controller="Home" asp-action="About">About Us</a>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to receive product drops and workspace inspiration.</p>
+                <form id="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+                    <input type="email" placeholder="Your email address" required />
+                    <button type="submit" class="btn btn-secondary">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @DateTime.Now.Year HFG-N. All rights reserved. Created in ASP.NET Core & C#.</p>
+        </div>
+    </footer>
+
+    <!-- Custom site JS -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
