@@ -6,8 +6,6 @@ builder.Services.AddSingleton<azure_fd_app_2.Services.ProductService>();
 
 var app = builder.Build();
 
-app.UsePathBase("/home");
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
