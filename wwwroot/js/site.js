@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCart();
     initCatalogFilters();
     initQuickViewModal();
+    initUserMenu();
 });
 
 /* ==========================================================================
@@ -432,3 +433,25 @@ function showToast(message) {
 
 // Make globally accessible for custom elements/forms
 window.showToast = showToast;
+
+/* ==========================================================================
+   User Account Menu Dropdown Toggle
+   ========================================================================== */
+function initUserMenu() {
+    const menuToggle = document.getElementById('user-menu-toggle');
+    const dropdown = document.getElementById('user-dropdown');
+
+    if (!menuToggle || !dropdown) return;
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && !menuToggle.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+}
+

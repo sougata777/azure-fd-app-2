@@ -7,4 +7,13 @@
     <RootNamespace>azure_fd_app_2</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="Procfile" CopyToPublishDirectory="Always" />
+    <None Include="web.config" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.10.0" />
+  </ItemGroup>
+
 </Project>

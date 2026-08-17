@@ -1,0 +1,106 @@
+@model azure_fd_app_2.Models.UserProfileViewModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="profile-page-container">
+    <div class="profile-header-card">
+        <div class="profile-avatar-wrapper">
+            @if (!string.IsNullOrEmpty(Model.Picture))
+            {
+                <img src="@Model.Picture" alt="@Model.Name" class="profile-avatar-img" />
+            }
+            else
+            {
+                <div class="profile-avatar-fallback">
+                    @(string.IsNullOrEmpty(Model.Name) ? "U" : Model.Name.Substring(0, 1).ToUpper())
+                </div>
+            }
+            <span class="provider-badge @Model.IdentityProvider.ToLower().Replace(" ", "-")">
+                @Model.IdentityProvider
+            </span>
+        </div>
+
+        <div class="profile-main-info">
+            <h1 class="profile-name">@Model.Name</h1>
+            <p class="profile-email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                @Model.Email
+                @if (Model.EmailVerified)
+                {
+                    <span class="verified-pill" title="Email Verified">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Verified
+                    </span>
+                }
+            </p>
+        </div>
+
+        <div class="profile-actions">
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-secondary btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Sign Out
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Details Grid -->
+    <div class="profile-details-grid">
+        <div class="detail-card">
+            <span class="detail-label">Authentication Provider</span>
+            <span class="detail-value">
+                <strong>@Model.IdentityProvider</strong> (via Auth0)
+            </span>
+        </div>
+        <div class="detail-card">
+            <span class="detail-label">User ID (Sub)</span>
+            <span class="detail-value code-font">@Model.UserId</span>
+        </div>
+        <div class="detail-card">
+            <span class="detail-label">Nickname</span>
+            <span class="detail-value">@(string.IsNullOrEmpty(Model.Nickname) ? Model.Name : Model.Nickname)</span>
+        </div>
+    </div>
+
+    <!-- User Claims Card -->
+    <div class="profile-claims-section">
+        <div class="section-title-wrapper">
+            <h3>Auth0 Identity Claims</h3>
+            <p>Security and profile attributes granted by Auth0 authentication</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="claims-table">
+                <thead>
+                    <tr>
+                        <th>Claim Type</th>
+                        <th>Claim Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var claim in Model.Claims)
+                    {
+                        var shortType = claim.Type.Contains("/") ? claim.Type.Substring(claim.Type.LastIndexOf('/') + 1) : claim.Type;
+                        <tr>
+                            <td>
+                                <span class="claim-type-tag" title="@claim.Type">@shortType</span>
+                            </td>
+                            <td class="claim-value-cell">
+                                <code>@claim.Value</code>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
