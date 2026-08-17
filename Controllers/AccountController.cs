@@ -41,6 +41,9 @@ public class AccountController : Controller
         await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
     }
 
+    public async Task Signup(string returnUrl = "/", string? connection = null) => await SignUp(returnUrl, connection);
+
+
     [Authorize]
     public async Task Logout()
     {
