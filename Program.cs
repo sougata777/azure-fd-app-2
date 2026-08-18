@@ -16,6 +16,7 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
     {
         options.ClientSecret = clientSecret;
     }
+    options.CallbackPath = builder.Configuration["Auth0:CallbackPath"] ?? "/auth/app-2/callback";
 });
 
 var app = builder.Build();
